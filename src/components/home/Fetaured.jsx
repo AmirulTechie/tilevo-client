@@ -2,6 +2,7 @@ import { getTilesData } from '@/lib/data';
 
 import React from 'react';
 import TilesCard from '../shared/TilesCard';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 
 
@@ -21,8 +22,8 @@ const Fetaured = async() => {
                     tilesData.map(tile => <TilesCard key={tile.id} tile={tile}></TilesCard>)
                 }
             </div>
-            <div>
-                <button className="btn btn-wide">Browse All</button>
+            <div className='text-center mt-30'>
+                <button className="btn btn-wide btn-outline btn-info text-md font-bold">Browse All <FaArrowRightLong></FaArrowRightLong></button>
             </div>
         </div>
     );

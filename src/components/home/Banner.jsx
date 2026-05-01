@@ -2,7 +2,7 @@ const Banner = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content text-center flex flex-col">
-                <div className="border rounded-full px-4 font-medium py-1">
+                <div className="border border-blue-400 text-blue-400 rounded-full px-4 font-medium py-1">
                     <p>New arrivals every week</p>
                 </div>
                 <div className="">
@@ -12,7 +12,7 @@ const Banner = () => {
                     <p className="py-6 text-lg font-medium">
                         Explore a curated collection of premium tiles for every space, style, and vision.
                     </p>
-                    <button className="btn btn-outline">Browse now</button>
+                    <button className="btn btn-outline btn-info">Browse now</button>
                     
                 </div>
             </div>
