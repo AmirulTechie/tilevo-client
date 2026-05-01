@@ -9,7 +9,7 @@ const Banner = () => {
                     <p>New arrivals every week</p>
                 </div>
                 <div className="animate__animated animate__fadeInLeft">
-                    <h1 className="lg:text-7xl md:text-6xl text-5xl font-bold"><span className="">Discover your </span>
+                    <h1 className="lg:text-7xl md:text-6xl text-5xl font-bold md:leading-24"><span className="">Discover your </span>
                     <br />
                         <span className="opacity-80">perfect aesthetic.</span></h1>
                     <p className="py-6 text-lg font-medium">
