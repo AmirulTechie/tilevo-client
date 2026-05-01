@@ -16,10 +16,13 @@ const Fetaured = async() => {
                 <p>Handpicked from our latest collection</p>
                 </div>
             </div>
-            <div className='flex flex-wrap text-center mt-50 gap-10 justify-around'>
+            <div className='flex flex-wrap text-center mt-10 gap-10 justify-around md:px-25'>
                 {
                     tilesData.map(tile => <TilesCard key={tile.id} tile={tile}></TilesCard>)
                 }
+            </div>
+            <div>
+                <button className="btn btn-wide">Browse All</button>
             </div>
         </div>
     );

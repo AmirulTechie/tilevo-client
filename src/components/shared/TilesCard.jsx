@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const TilesCard = ({tile}) => {
     return (
-        <div className=' border-base-500 shadow-sm p-2  items-center bg-10'>
+        <div className=' border-base-500 shadow-xl p-5  items-center bg-10 w-75 space-y-4 hover:cursor-pointer hover:shadow-2xl'>
                 <div className="">
                     <Image src={tile.image} alt={tile.title} width={400} height={200}></Image>
                 </div>
@@ -17,7 +17,7 @@ const TilesCard = ({tile}) => {
                         ${tile.price}
                     </div>
                     <div>
-                        <button className='btn btn-outline'>Details</button>
+                    <button className="btn btn-xs sm:btn-sm md:btn-md">Details</button>
                     </div>
                 </div>
             </div>
