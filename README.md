@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tilevo
 
-## Getting Started
+> Tilevo is a full-stack tile gallery platform where users can explore, search, and discover premium tile collections — powered by Next.js and BetterAuth.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔗 Live URL
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[https://tilevo.vercel.app](https://tilevo.vercel.app)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Purpose
 
-## Learn More
+Tilevo is a modern tile gallery web application that allows users to browse a curated collection of premium tiles, view detailed information about each tile, and manage their personal profile. It features secure authentication with Google OAuth and a fully responsive design across all devices.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🏠 **Home Page** — Hero banner, scrolling marquee, and featured tile showcase
+- 🖼️ **Tile Gallery** — Browse and search all tiles by title in a clean grid layout
+- 🔍 **Tile Details** — Full tile information with high-resolution preview (private route)
+- 🔐 **Authentication** — Email/password login and Google OAuth via BetterAuth
+- 👤 **My Profile** — View and update logged-in user name and profile image
+- 📱 **Fully Responsive** — Optimized for mobile, tablet, and desktop
+- 🔒 **Route Protection** — Private routes secured with Next.js middleware
+- ⚡ **Loading States** — Loaders shown during data fetching
+- 🚫 **404 Page** — Custom not-found page implementation
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Technology | Usage |
+|---|---|
+| Next.js (App Router) | Frontend Framework |
+| DaisyUI / HeroUI | UI Component Library |
+| BetterAuth | Authentication (with MongoDB Adapter) |
+| MongoDB | Database |
+| JSON Server | Mock REST API |
+| Vercel | Deployment |
+
+---
+
+## 📦 NPM Packages Used
+
+| Package | Purpose |
+|---|---|
+| `better-auth` | Authentication system |
+| `react-hot-toast` | Toast notifications |
+
+---
+
+## 👤 Author
+
+**Amirul** — Programming Hero Batch 13
