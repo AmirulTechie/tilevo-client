@@ -1,4 +1,5 @@
 import 'animate.css';
+import Link from 'next/link';
 
 const Banner = () => {
     return (
@@ -14,7 +15,7 @@ const Banner = () => {
                     <p className="py-6 text-lg font-medium">
                         Explore a curated collection of premium tiles for every space, style, and vision.
                     </p>
-                    <button className="btn btn-outline btn-info">Browse now</button>
+                    <button className="btn btn-outline btn-info"><Link href="/all-tiles">Browse now</Link></button>
                     
                 </div>
             </div>
