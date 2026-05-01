@@ -1,5 +1,6 @@
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import NavLink from "./NavLink";
 const NavBar = () => {
     return (
 
@@ -16,9 +17,9 @@ const NavBar = () => {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 font-semibold gap-10 text-lg">
-                            <Link href="/"><button className="hover:cursor-pointer hover:text-blue-400">Home</button></Link>
-                            <Link href="/all-tiles" ><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></Link>
-                            <Link href="/my-profile" ><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></Link>
+                            <NavLink href="/"><button className="hover:cursor-pointer hover:text-blue-400">Home</button></NavLink>
+                            <NavLink href="/all-tiles" ><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></NavLink>
+                            <NavLink href="/my-profile" ><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></NavLink>
                         </ul>
                     </div>
                     <div className="navbar-end">
@@ -30,9 +31,9 @@ const NavBar = () => {
 
                 <div className="collapse-content lg:hidden z-1">
                     <ul className="menu">
-                        <Link href="/" ><button className="hover:cursor-pointer hover:text-blue-400">Home</button></Link>
-                        <Link href="/all-tiles"><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></Link>
-                        <Link href="/my-profile"><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></Link>
+                        <NavLink href="/" ><button className="hover:cursor-pointer hover:text-blue-400">Home</button></NavLink>
+                        <NavLink href="/all-tiles"><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></NavLink>
+                        <NavLink href="/my-profile"><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></NavLink>
                     </ul>
                 </div>
             </div>

@@ -9,7 +9,6 @@ import Link from 'next/link';
 
 const Fetaured = async() => {
     const tilesData = await getTilesData();
-    console.log(tilesData);
     return (
         <div className='bg-base-200 min-h-screen p-10'>
             <div className='space-y-1 mt-20'>
@@ -24,7 +23,7 @@ const Fetaured = async() => {
                 }
             </div>
             <div className='text-center mt-30'>
-                <button className="btn btn-wide btn-outline btn-info text-md font-bold"><Link href="/all-tiles">Browse All</Link> <FaArrowRightLong></FaArrowRightLong></button>
+                <Link href="/all-tiles"><button className="btn btn-wide btn-outline btn-info text-md font-bold">Browse All <FaArrowRightLong></FaArrowRightLong></button></Link>
             </div>
         </div>
     );

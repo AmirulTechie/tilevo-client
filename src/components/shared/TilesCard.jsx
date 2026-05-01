@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const TilesCard = ({tile}) => {
     return (
         <div className=' border-base-500 shadow-xl p-5  items-center bg-10 w-75 space-y-4 hover:cursor-pointer hover:shadow-2xl'>
-                <div className="h-65">
+                <figure className="h-65">
                     <Image src={tile.image} alt={tile.title} width={400} height={200}></Image>
-                </div>
+                </figure>
                 <div className="text-left">
                 <h2 className='uppercase font-bold'>
                     {tile.title}
@@ -17,7 +18,7 @@ const TilesCard = ({tile}) => {
                         ${tile.price}
                     </div>
                     <div>
-                    <button className="btn btn-xs sm:btn-sm md:btn-md">Details</button>
+                    <Link href={`/all-tiles/${tile.id}`}><button className="btn btn-xs sm:btn-sm md:btn-md">Details</button></Link>
                     </div>
                 </div>
             </div>
