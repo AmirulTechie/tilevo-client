@@ -25,7 +25,7 @@ const LoginPage = () => {
                 {/* Radial glow */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                        className="w-[500px] h-[500px] rounded-full"
+                        className="w-125 h-125 rounded-full"
                         style={{
                             background: 'radial-gradient(circle, rgba(214,211,209,0.5) 0%, transparent 70%)',
                         }}

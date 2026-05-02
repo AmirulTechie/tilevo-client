@@ -2,12 +2,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 
 const RegisterPage = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, control, formState: { errors } } = useForm();
 
-    const passwordValue = watch('password', '');
+    const passwordValue = useWatch({ control, name: 'password', defaultValue: '' });
 
     const handleRegisterFunc = (data) => {
         // wire up BetterAuth registration here
@@ -31,7 +31,7 @@ const RegisterPage = () => {
                 {/* Radial glow */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                        className="w-[500px] h-[500px] rounded-full"
+                        className="w-125 h-125 rounded-full"
                         style={{
                             background: 'radial-gradient(circle, rgba(214,211,209,0.5) 0%, transparent 70%)',
                         }}
