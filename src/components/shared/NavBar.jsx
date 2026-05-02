@@ -17,7 +17,7 @@ const NavBar = () => {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="text-base font-medium text-stone-900 tracking-tight shrink-0 text-2xl md:text-3xl"
+                    className="text-2xl font-medium text-stone-900 tracking-tight shrink-0 md:text-3xl"
                 >
                     Tilevo
                 </Link>
@@ -79,9 +79,9 @@ const NavBar = () => {
                         onClick={() => setMobileOpen(prev => !prev)}
                         aria-label="Toggle menu"
                     >
-                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[3px]' : ''}`} />
+                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-0.75' : ''}`} />
                         <span className={`block h-px bg-stone-700 transition-all duration-300 ${mobileOpen ? 'opacity-0 w-0' : 'w-3.5'}`} />
-                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[9px]' : ''}`} />
+                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2.25' : ''}`} />
                     </button>
                 </div>
             </div>
