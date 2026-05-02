@@ -1,43 +1,152 @@
-import { Button } from "@heroui/react";
-import Link from "next/link";
-import NavLink from "./NavLink";
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import NavLink from './NavLink';
+
 const NavBar = () => {
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    // Replace with your actual auth session hook e.g. useSession() from BetterAuth
+    const user = null; // swap with: const { data: session } = useSession();
+
     return (
+        <header className="w-full border-b border-stone-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
 
-        <div>
-            <div className="max-lg:collapse bg-base-200 lg:mb-1 shadow-sm w-full rounded-md px-2">
-                <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
-                <label htmlFor="navbar-1-toggle" className="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-                <div className="collapse-title navbar">
-                    <div className="navbar-start">
-                        <label htmlFor="navbar-1-toggle" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <Link href="/" className="font-bold text-3xl">Tilevo</Link>
-                    </div>
-                    <div className="navbar-center hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1 font-semibold gap-10 text-lg">
-                            <NavLink href="/"><button className="hover:cursor-pointer hover:text-blue-400">Home</button></NavLink>
-                            <NavLink href="/all-tiles" ><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></NavLink>
-                            <NavLink href="/my-profile" ><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></NavLink>
-                        </ul>
-                    </div>
-                    <div className="navbar-end">
-                        <div>
-                            <Link href="/login"><Button variant="outline" className="text-blue-400">Login</Button></Link>
-                        </div>
-                    </div>
-                </div>
+                {/* Logo */}
+                <Link
+                    href="/"
+                    className="text-base font-medium text-stone-900 tracking-tight shrink-0 text-2xl md:text-3xl"
+                >
+                    Tilevo
+                </Link>
 
-                <div className="collapse-content lg:hidden z-1">
-                    <ul className="menu">
-                        <NavLink href="/" ><button className="hover:cursor-pointer hover:text-blue-400">Home</button></NavLink>
-                        <NavLink href="/all-tiles"><button className="hover:cursor-pointer hover:text-blue-400">All Tiles</button></NavLink>
-                        <NavLink href="/my-profile"><button className="hover:cursor-pointer hover:text-blue-400">My Profile</button></NavLink>
-                    </ul>
+                {/* Desktop nav links — centered */}
+                <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+                    <NavLink href="/">
+                        <span className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
+                            Home
+                        </span>
+                    </NavLink>
+                    <NavLink href="/all-tiles">
+                        <span className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
+                            All Tiles
+                        </span>
+                    </NavLink>
+                    <NavLink href="/my-profile">
+                        <span className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
+                            My Profile
+                        </span>
+                    </NavLink>
+                </nav>
+
+                {/* Right side */}
+                <div className="flex items-center gap-3">
+
+                    {/* Auth — desktop */}
+                    <div className="hidden lg:flex items-center gap-3">
+                        {user ? (
+                            <>
+                                {/* Avatar */}
+                                <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center shrink-0">
+                                    {user.image ? (
+                                        <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <span className="text-xs font-medium text-stone-500">
+                                            {user.name?.[0]?.toUpperCase() ?? 'U'}
+                                        </span>
+                                    )}
+                                </div>
+                                {/* Logout */}
+                                <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all">
+                                    Log out
+                                </button>
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="text-sm font-medium bg-stone-900 text-white px-5 py-1.5 rounded-full hover:bg-stone-700 transition-colors"
+                            >
+                                Login
+                            </Link>
+                        )}
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 group"
+                        onClick={() => setMobileOpen(prev => !prev)}
+                        aria-label="Toggle menu"
+                    >
+                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[3px]' : ''}`} />
+                        <span className={`block h-px bg-stone-700 transition-all duration-300 ${mobileOpen ? 'opacity-0 w-0' : 'w-3.5'}`} />
+                        <span className={`block h-px w-5 bg-stone-700 transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[9px]' : ''}`} />
+                    </button>
                 </div>
             </div>
-        </div>
+
+            {/* Mobile drawer */}
+            <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-stone-100 ${mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <nav className="flex flex-col px-6 py-4 gap-1 bg-white">
+                    <NavLink href="/">
+                        <span
+                            className="block text-sm text-stone-600 hover:text-stone-900 py-2.5 border-b border-stone-50 transition-colors"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Home
+                        </span>
+                    </NavLink>
+                    <NavLink href="/all-tiles">
+                        <span
+                            className="block text-sm text-stone-600 hover:text-stone-900 py-2.5 border-b border-stone-50 transition-colors"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            All Tiles
+                        </span>
+                    </NavLink>
+                    <NavLink href="/my-profile">
+                        <span
+                            className="block text-sm text-stone-600 hover:text-stone-900 py-2.5 border-b border-stone-50 transition-colors"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            My Profile
+                        </span>
+                    </NavLink>
+
+                    {/* Auth — mobile */}
+                    <div className="pt-3 pb-1">
+                        {user ? (
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2.5">
+                                    <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center">
+                                        {user.image ? (
+                                            <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                                        ) : (
+                                            <span className="text-xs font-medium text-stone-500">
+                                                {user.name?.[0]?.toUpperCase() ?? 'U'}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <span className="text-sm text-stone-700">{user.name}</span>
+                                </div>
+                                <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 transition-all">
+                                    Log out
+                                </button>
+                            </div>
+                        ) : (
+                            <Link
+                                href="/login"
+                                onClick={() => setMobileOpen(false)}
+                                className="block w-full text-center text-sm font-medium bg-stone-900 text-white px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors"
+                            >
+                                Login
+                            </Link>
+                        )}
+                    </div>
+                </nav>
+            </div>
+        </header>
     );
 };
 
