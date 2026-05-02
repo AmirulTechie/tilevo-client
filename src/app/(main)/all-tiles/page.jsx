@@ -7,7 +7,6 @@ const AllTilesPage = async () => {
     return (
         <div className="min-h-screen bg-white">
 
-            {/* Page header — server rendered */}
             <div className="border-b border-stone-100 px-6 md:px-16 py-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="animate__animated animate__fadeInLeft">
@@ -25,8 +24,7 @@ const AllTilesPage = async () => {
                     </div>
                 </div>
             </div>
-
-            {/* Search + Grid — client rendered */}
+            
             <TilesGrid allTiles={allTiles} />
 
         </div>

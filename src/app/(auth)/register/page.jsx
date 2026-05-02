@@ -1,18 +1,16 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
-import React, { useState } from 'react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
 const RegisterPage = () => {
-    const [form, setForm] = useState({
-        name: '',
-        email: '',
-        photoUrl: '',
-        password: '',
-    });
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const handleChange = (e) => {
-        setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const passwordValue = watch('password', '');
+
+    const handleRegisterFunc = (data) => {
+        // wire up BetterAuth registration here
     };
 
     return (
@@ -40,7 +38,7 @@ const RegisterPage = () => {
                     />
                 </div>
 
-                {/* Tile mosaic — slightly different arrangement */}
+                {/* Tile mosaic */}
                 <div className="relative z-10 grid grid-cols-3 gap-3 mb-12 -rotate-6 opacity-90">
                     {[
                         'bg-stone-100', 'bg-stone-200', 'bg-stone-300',
@@ -51,7 +49,6 @@ const RegisterPage = () => {
                     ))}
                 </div>
 
-                {/* Quote */}
                 <div className="relative z-10 text-center max-w-xs">
                     <p className="text-stone-700 text-lg font-medium leading-snug tracking-tight">
                         "Join a community that knows the beauty of detail."
@@ -65,7 +62,7 @@ const RegisterPage = () => {
 
                 {/* Logo */}
                 <div className="absolute top-8 left-8 md:left-16">
-                    <Link href="/" className="text-base font-medium text-stone-800 tracking-tight">
+                    <Link href="/" className="text-2xl font-medium text-stone-800 tracking-tight">
                         Tilevo
                     </Link>
                 </div>
@@ -110,98 +107,74 @@ const RegisterPage = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="flex flex-col gap-4">
+                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunc)}>
 
-                        {/* Name */}
+                        {/* Full name */}
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-medium text-stone-500 tracking-wide">
+                            <label className={`text-xs font-medium ${errors.name ? 'text-red-500' : 'text-stone-500'} tracking-wide`}>
                                 Full name
                             </label>
                             <input
                                 type="text"
-                                name="name"
-                                value={form.name}
-                                onChange={handleChange}
+                                {...register('name', { required: 'Please enter your name' })}
                                 placeholder="Your name"
-                                required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                                className={`w-full border ${errors.name ? 'border-red-500' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all`}
                             />
+                            {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
                         </div>
 
                         {/* Email */}
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-medium text-stone-500 tracking-wide">
+                            <label className={`text-xs font-medium ${errors.email ? 'text-red-500' : 'text-stone-500'} tracking-wide`}>
                                 Email
                             </label>
                             <input
                                 type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
+                                {...register('email', { required: 'Please enter your email' })}
                                 placeholder="you@email.com"
-                                required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                                className={`w-full border ${errors.email ? 'border-red-500' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all`}
                             />
+                            {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
                         </div>
 
-                        {/* Photo URL */}
+                        {/* Photo URL — optional, no required validation */}
                         <div className="flex flex-col gap-1.5">
                             <label className="text-xs font-medium text-stone-500 tracking-wide">
                                 Photo URL
                                 <span className="text-stone-300 font-normal ml-1">(optional)</span>
                             </label>
-                            <div className="relative">
-                                <input
-                                    type="url"
-                                    name="photoUrl"
-                                    value={form.photoUrl}
-                                    onChange={handleChange}
-                                    placeholder="https://example.com/photo.jpg"
-                                    className="w-full border border-stone-200 rounded-xl px-4 py-3 pr-10 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
-                                />
-                                {/* Live avatar preview */}
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center">
-                                    {form.photoUrl ? (
-                                        <img
-                                            src={form.photoUrl}
-                                            alt="preview"
-                                            className="w-full h-full object-cover"
-                                            onError={e => e.target.style.display = 'none'}
-                                        />
-                                    ) : (
-                                        <svg className="w-3 h-3 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
-                                    )}
-                                </div>
-                            </div>
+                            <input
+                                type="url"
+                                {...register('photoUrl')}
+                                placeholder="https://example.com/photo.jpg"
+                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                            />
                         </div>
 
                         {/* Password */}
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-medium text-stone-500 tracking-wide">
+                            <label className={`text-xs font-medium ${errors.password ? 'text-red-500' : 'text-stone-500'} tracking-wide`}>
                                 Password
                             </label>
                             <input
                                 type="password"
-                                name="password"
-                                value={form.password}
-                                onChange={handleChange}
+                                {...register('password', {
+                                    required: 'Please enter a password',
+                                    minLength: { value: 6, message: 'Password must be at least 6 characters' }
+                                })}
                                 placeholder="••••••••"
-                                required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                                className={`w-full border ${errors.password ? 'border-red-500' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all`}
                             />
-                            {/* Password strength hint */}
-                            {form.password.length > 0 && (
-                                <p className={`text-xs mt-0.5 ${form.password.length < 6
-                                    ? 'text-red-400'
-                                    : form.password.length < 10
-                                        ? 'text-amber-400'
-                                        : 'text-emerald-500'
+                            {errors.password ? (
+                                <p className="text-xs text-red-500">{errors.password.message}</p>
+                            ) : passwordValue.length > 0 && (
+                                <p className={`text-xs mt-0.5 ${passwordValue.length < 6 ? 'text-red-400'
+                                        : passwordValue.length < 10 ? 'text-amber-400'
+                                            : 'text-emerald-500'
                                     }`}>
-                                    {form.password.length < 6
+                                    {passwordValue.length < 6
                                         ? 'Too short — use at least 6 characters'
-                                        : form.password.length < 10
+                                        : passwordValue.length < 10
                                             ? 'Good — could be stronger'
                                             : 'Strong password ✓'}
                                 </p>

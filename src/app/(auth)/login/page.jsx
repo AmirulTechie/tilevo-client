@@ -1,15 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
 const LoginPage = () => {
-    const handleLoginFunc = (e) =>{
-        e.preventDefault();
-        const email = e.target.email.value
-        const password = e.target.password.value
-        console.log(email, password)
+    const {register, handleSubmit, formState: {errors}} = useForm()
+    const handleLoginFunc = (data) =>{
     }
-
     return (
         <div className="min-h-screen bg-white flex">
 
@@ -59,7 +56,7 @@ const LoginPage = () => {
 
                 {/* Logo */}
                 <div className="absolute top-8 left-8 md:left-16">
-                    <Link href="/" className="text-base font-medium text-stone-800 tracking-tight">
+                    <Link href="/" className="text-2xl font-medium text-stone-800 tracking-tight">
                         Tilevo
                     </Link>
                 </div>
@@ -104,38 +101,36 @@ const LoginPage = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="flex flex-col gap-4" onSubmit={handleLoginFunc}>
+                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleLoginFunc)}>
 
                         {/* Email */}
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-medium text-stone-500 tracking-wide">
+                            <label className={`text-xs font-medium ${errors.email ? "text-red-500" : "text-stone-500"} tracking-wide`}>
                                 Email
                             </label>
                             <input
                                 type="email"
-                                value={null}
-                                onChange={null}
-                                name='email'
+                                {...register("email",{required: "Type your email"})}
                                 placeholder="you@email.com"
                                 required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                                className={`w-full border ${errors.email ? "border-red-500" : "border-stone-200"} rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all`}
                             />
+                            {errors.email && <p className='text-xs text-red-500'>{errors.email.message}</p>}
                         </div>
 
                         {/* Password */}
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-medium text-stone-500 tracking-wide">
+                            <label className={`text-xs font-medium ${errors.password ? "text-red-500" : "text-stone-500"} tracking-wide`}>
                                 Password
                             </label>
                             <input
                                 type="password"
-                                value={null}
-                                onChange={null}
-                                name='password'
+                                {...register("password", {required:"Type your password"})}
                                 placeholder="••••••••"
                                 required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
+                                className={`w-full border ${errors.password ? "border-red-500" : "border-stone-200"} rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all`}
                             />
+                            {errors.password && <p className='text-xs text-red-500'>{errors.password.message}</p>}
                         </div>
 
                         {/* Error message — uncomment and wire up when auth fails */}

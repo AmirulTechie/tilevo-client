@@ -15,7 +15,7 @@ const TilesGrid = ({ allTiles }) => {
 
     return (
         <>
-            {/* Search bar */}
+
             <div className="px-6 md:px-16 py-6 border-b border-stone-100 sticky top-14 bg-white/80 backdrop-blur-md z-10 animate__animated animate__fadeInLeft">
                 <div className="max-w-7xl mx-auto">
                     <SearchField
@@ -37,11 +37,9 @@ const TilesGrid = ({ allTiles }) => {
                 </div>
             </div>
 
-            {/* Grid */}
             <div className="px-6 md:px-16 py-12">
                 <div className="max-w-7xl mx-auto">
 
-                    {/* Live result count */}
                     {query && (
                         <p className="text-xs text-stone-400 mb-6">
                             {filtered.length > 0
@@ -51,9 +49,8 @@ const TilesGrid = ({ allTiles }) => {
                         </p>
                     )}
 
-                    {/* Tiles */}
                     {filtered.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate__animated animate__fadeInUp">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 animate__animated animate__fadeInUp">
                             {filtered.map(tile => (
                                 <TilesCard key={tile.id} tile={tile} />
                             ))}
