@@ -9,9 +9,17 @@ const RegisterPage = () => {
 
     const passwordValue = useWatch({ control, name: 'password', defaultValue: '' });
 
-    const handleRegisterFunc = (data) => {
+    const handleRegisterFunc = async(data) => {
         // wire up BetterAuth registration here
+        const { data: res, error } = await authClient.signUp.email({
+            name: "", // required
+            email: "john.doe@example.com", // required
+            password: "password1234", // required
+            image: "https://example.com/image.png",
+            callbackURL: "https://example.com/callback",
+        });
     };
+
 
     return (
         <div className="min-h-screen bg-white flex">
