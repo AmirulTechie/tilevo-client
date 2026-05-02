@@ -1,11 +1,14 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
-
-import React, { useState } from 'react';
 import Link from 'next/link';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const handleLoginFunc = (e) =>{
+        e.preventDefault();
+        const email = e.target.email.value
+        const password = e.target.password.value
+        console.log(email, password)
+    }
 
     return (
         <div className="min-h-screen bg-white flex">
@@ -101,7 +104,7 @@ const LoginPage = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="flex flex-col gap-4">
+                    <form className="flex flex-col gap-4" onSubmit={handleLoginFunc}>
 
                         {/* Email */}
                         <div className="flex flex-col gap-1.5">
@@ -110,8 +113,9 @@ const LoginPage = () => {
                             </label>
                             <input
                                 type="email"
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
+                                value={null}
+                                onChange={null}
+                                name='email'
                                 placeholder="you@email.com"
                                 required
                                 className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"
@@ -125,8 +129,9 @@ const LoginPage = () => {
                             </label>
                             <input
                                 type="password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                value={null}
+                                onChange={null}
+                                name='password'
                                 placeholder="••••••••"
                                 required
                                 className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-300 bg-white focus:outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-100 transition-all"

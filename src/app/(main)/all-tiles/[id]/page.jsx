@@ -156,14 +156,14 @@ const TilesDetailsPage = async ({ params }) => {
                         {/* CTA */}
                         <div className="flex gap-3 pt-2">
                             <button
-                                className="flex-1 bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors"
+                                className="flex-1 bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors hover:cursor-pointer"
                                 disabled={!inStock}
                             >
                                 Add to enquiry
                             </button>
                             <Link
                                 href="/all-tiles"
-                                className="px-6 py-3 border border-stone-200 text-stone-600 text-sm rounded-full hover:bg-stone-50 transition-colors"
+                                className="hover:cursor-pointer px-6 py-3 border border-stone-200 text-stone-600 text-sm rounded-full hover:bg-stone-50 transition-colors"
                             >
                                 Back
                             </Link>
