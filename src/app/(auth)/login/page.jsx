@@ -86,13 +86,13 @@ const LoginPage = () => {
                         Continue with Google
                     </button>
 
-=                    <div className="flex items-center gap-4 my-6">
+                    <div className="flex items-center gap-4 my-6">
                         <div className="flex-1 h-px bg-stone-100" />
                         <p className="text-xs text-stone-300 uppercase tracking-widest">or</p>
                         <div className="flex-1 h-px bg-stone-100" />
                     </div>
 
-=                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleLoginFunc)}>
+                   <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleLoginFunc)}>
 
                         <div className="flex flex-col gap-1.5">
                             <label className={`text-xs font-medium ${errors.email ? "text-red-500" : "text-stone-500"} tracking-wide`}>

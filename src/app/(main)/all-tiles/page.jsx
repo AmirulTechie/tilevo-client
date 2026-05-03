@@ -3,7 +3,7 @@ import { getAllTilesData } from "@/lib/data";
 
 const AllTilesPage = async () => {
     const allTiles = await getAllTilesData();
-
+    
 
     return (
         <div className="min-h-screen bg-white">

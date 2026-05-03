@@ -24,7 +24,7 @@ const RegisterPage = () => {
         });
         console.log(res, error);
         if(error){
-            toast("Something went wrong. Please try again");
+            toast.error(error.message ? error.message : "Something went wrong. Try Again!");
             return;
         }
         if(res){
