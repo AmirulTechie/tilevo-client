@@ -22,10 +22,8 @@ export default function Footer() {
     return (
         <div className="bg-gray-50 border-t border-gray-200 pt-12 pb-6 px-6 md:px-10 lg:px-16">
 
-            {/* Top grid */}
             <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
 
-                {/* Brand column */}
                 <div className="col-span-2 md:col-span-1">
                     <p className="text-base font-medium text-gray-900 mb-2 tracking-tight">
                         Tilevo
@@ -35,7 +33,6 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* Link columns */}
                 {Object.entries(footerLinks).map(([group, links]) => (
                     <div key={group}>
                         <p className="text-xs font-medium text-gray-900 uppercase tracking-widest mb-4">
@@ -57,15 +54,12 @@ export default function Footer() {
                 ))}
             </div>
 
-            {/* Divider */}
             <div className="max-w-6xl mx-auto border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 
-                {/* Copyright */}
                 <p className="text-xs text-gray-400">
                     © {new Date().getFullYear()} Tilevo. All rights reserved.
                 </p>
 
-                {/* Social links */}
                 <div className="flex items-center gap-5">
                     {["Instagram", "Facebook", "Twitter"].map((platform) => (
                         <Link

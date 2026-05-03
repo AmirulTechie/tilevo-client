@@ -2,6 +2,7 @@ import 'animate.css';
 import Link from 'next/link';
 
 const Banner = () => {
+
     return (
         <section className="relative min-h-screen bg-white flex flex-col items-center justify-center overflow-hidden px-6">
 
@@ -33,7 +34,6 @@ const Banner = () => {
                     </span>
                 </div>
 
-                {/* Heading */}
                 <div className="animate__animated animate__fadeInUp">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-medium text-stone-900 tracking-tight leading-[1.08]">
                         Discover your
@@ -42,14 +42,12 @@ const Banner = () => {
                     </h1>
                 </div>
 
-                {/* Subtext */}
                 <div className="animate__animated animate__fadeInUp" style={{ animationDelay: '0.1s' }}>
                     <p className="text-base md:text-lg text-stone-400 leading-relaxed max-w-md">
                         Explore a curated collection of premium tiles for every space, style, and vision.
                     </p>
                 </div>
 
-                {/* CTA buttons */}
                 <div
                     className="flex items-center gap-3 animate__animated animate__fadeInUp"
                     style={{ animationDelay: '0.2s' }}
@@ -69,7 +67,6 @@ const Banner = () => {
                 </div>
             </div>
 
-            {/* Bottom scroll hint */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate__animated animate__fadeIn" style={{ animationDelay: '0.6s' }}>
                 <span className="text-xs text-stone-300 tracking-widest uppercase">Scroll</span>
                 <div className="w-px h-8 bg-linear-to-b from-stone-300 to-transparent" />

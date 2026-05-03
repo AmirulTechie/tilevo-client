@@ -16,14 +16,13 @@ const RegisterPage = () => {
 
     const handleRegisterFunc = async(data) => {
         const {name, email, password, photoUrl} = data;
-        // wire up BetterAuth registration here
         const { data: res, error } = await authClient.signUp.email({
-            name: name, // required
-            email: email, // required
-            password: password, // required
+            name: name,
+            email: email,
+            password: password,
             image: photoUrl,
         });
-        
+        console.log(res, error);
         if(error){
             toast("Something went wrong. Please try again");
             return;
@@ -38,10 +37,8 @@ const RegisterPage = () => {
     return (
         <div className="min-h-screen bg-white flex">
 
-            {/* Left panel — decorative */}
             <div className="hidden lg:flex lg:w-1/2 relative bg-stone-50 border-r border-stone-100 flex-col items-center justify-center p-16 overflow-hidden">
 
-                {/* Background grid */}
                 <div
                     className="absolute inset-0 opacity-[0.04]"
                     style={{
@@ -50,7 +47,6 @@ const RegisterPage = () => {
                     }}
                 />
 
-                {/* Radial glow */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
                         className="w-125 h-125 rounded-full"
@@ -60,7 +56,6 @@ const RegisterPage = () => {
                     />
                 </div>
 
-                {/* Tile mosaic */}
                 <div className="relative z-10 grid grid-cols-3 gap-3 mb-12 -rotate-6 opacity-90">
                     {[
                         'bg-stone-100', 'bg-stone-200', 'bg-stone-300',
@@ -79,10 +74,8 @@ const RegisterPage = () => {
                 </div>
             </div>
 
-            {/* Right panel — form */}
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-8 md:px-16 py-16 relative">
 
-                {/* Logo */}
                 <div className="absolute top-8 left-8 md:left-16">
                     <Link href="/" className="text-2xl font-medium text-stone-800 tracking-tight">
                         Tilevo
@@ -91,7 +84,6 @@ const RegisterPage = () => {
 
                 <div className="w-full max-w-sm animate__animated animate__fadeInUp animate__faster">
 
-                    {/* Header */}
                     <div className="mb-8">
                         <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-3">
                             Get started
@@ -107,7 +99,6 @@ const RegisterPage = () => {
                         </p>
                     </div>
 
-                    {/* Google button */}
                     <button
                         type="button"
                         className="w-full flex items-center justify-center gap-3 border border-stone-200 rounded-full py-3 px-6 text-sm font-medium text-stone-700 bg-white hover:bg-stone-50 hover:border-stone-300 transition-all duration-200 shadow-sm"
@@ -121,14 +112,12 @@ const RegisterPage = () => {
                         Continue with Google
                     </button>
 
-                    {/* Divider */}
                     <div className="flex items-center gap-4 my-6">
                         <div className="flex-1 h-px bg-stone-100" />
                         <p className="text-xs text-stone-300 uppercase tracking-widest">or</p>
                         <div className="flex-1 h-px bg-stone-100" />
                     </div>
 
-                    {/* Form */}
                     <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunc)}>
 
                         {/* Full name */}
@@ -145,7 +134,6 @@ const RegisterPage = () => {
                             {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
                         </div>
 
-                        {/* Email */}
                         <div className="flex flex-col gap-1.5">
                             <label className={`text-xs font-medium ${errors.email ? 'text-red-500' : 'text-stone-500'} tracking-wide`}>
                                 Email
@@ -159,7 +147,6 @@ const RegisterPage = () => {
                             {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
                         </div>
 
-                        {/* Photo URL — optional, no required validation */}
                         <div className="flex flex-col gap-1.5">
                             <label className="text-xs font-medium text-stone-500 tracking-wide">
                                 Photo URL
@@ -173,7 +160,6 @@ const RegisterPage = () => {
                             />
                         </div>
 
-                        {/* Password */}
                         <div className="flex flex-col gap-1.5">
                             <label className={`text-xs font-medium ${errors.password ? 'text-red-500' : 'text-stone-500'} tracking-wide`}>
                                 Password
@@ -203,24 +189,15 @@ const RegisterPage = () => {
                             )}
                         </div>
 
-                        {/* Error slot — wire up on registration failure */}
-                        {/* {error && (
-                            <p className="text-xs text-red-500 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
-                                {error}
-                            </p>
-                        )} */}
-
-                        {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors duration-200 mt-1"
+                            className="w-full bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors duration-200 mt-1 hover:cursor-pointer"
                         >
                             Create account
                         </button>
 
                     </form>
 
-                    {/* Footer note */}
                     <p className="text-xs text-stone-400 text-center leading-relaxed mt-8">
                         By registering, you agree to our{' '}
                         <Link href="#" className="text-stone-600 underline underline-offset-2 hover:text-stone-900 transition-colors">
@@ -233,7 +210,6 @@ const RegisterPage = () => {
                     </p>
                 </div>
 
-                {/* Back to home */}
                 <div className="absolute bottom-8">
                     <Link
                         href="/"

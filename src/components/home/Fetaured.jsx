@@ -6,12 +6,10 @@ import Link from 'next/link';
 
 const Featured = async () => {
     const tilesData = await getTilesData();
-
     return (
         <section id="featured" className="bg-white py-24 px-6 md:px-16">
             <div className="max-w-7xl mx-auto">
 
-                {/* Section header */}
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 animate__animated animate__fadeInLeft">
                     <div>
                         <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-3">
@@ -33,14 +31,12 @@ const Featured = async () => {
                     </Link>
                 </div>
 
-                {/* Tiles grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate__animated animate__fadeInUp">
                     {tilesData.map(tile => (
                         <TilesCard key={tile.id} tile={tile} />
                     ))}
                 </div>
 
-                {/* Mobile CTA */}
                 <div className="mt-12 flex justify-center md:hidden">
                     <Link
                         href="/all-tiles"
@@ -51,7 +47,6 @@ const Featured = async () => {
                     </Link>
                 </div>
 
-                {/* Desktop bottom CTA — subtle */}
                 <div className="mt-16 pt-10 border-t border-stone-100 hidden md:flex items-center justify-between">
                     <p className="text-sm text-stone-400">
                         Showing <span className="text-stone-700 font-medium">{tilesData.length}</span> featured tiles

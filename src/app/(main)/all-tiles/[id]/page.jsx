@@ -39,8 +39,7 @@ const TilesDetailsPage = async ({ params }) => {
     return (
         <div className="min-h-screen bg-white">
 
-            {/* Breadcrumb */}
-            <div className="border-b border-stone-100 px-6 md:px-16 py-4">
+=            <div className="border-b border-stone-100 px-6 md:px-16 py-4">
                 <div className="max-w-6xl mx-auto flex items-center gap-2 text-xs text-stone-400">
                     <Link href="/" className="hover:text-stone-700 transition-colors">Home</Link>
                     <span>/</span>
@@ -50,11 +49,9 @@ const TilesDetailsPage = async ({ params }) => {
                 </div>
             </div>
 
-            {/* Main content */}
             <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
 
-                    {/* Left — Image */}
                     <div className="relative">
                         <div className="aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200">
                             {image ? (
@@ -73,7 +70,6 @@ const TilesDetailsPage = async ({ params }) => {
                             )}
                         </div>
 
-                        {/* Stock badge over image */}
                         <div className="absolute top-4 left-4">
                             {inStock ? (
                                 <span className="inline-flex items-center gap-1.5 bg-white border border-stone-200 rounded-full px-3 py-1.5 text-xs font-medium text-emerald-700 shadow-sm">
@@ -89,20 +85,16 @@ const TilesDetailsPage = async ({ params }) => {
                         </div>
                     </div>
 
-                    {/* Right — Details */}
                     <div className="flex flex-col gap-6 pt-2">
 
-                        {/* Category */}
                         <p className="text-xs font-medium tracking-widest uppercase text-stone-400">
                             {category}
                         </p>
 
-                        {/* Title */}
                         <h1 className="text-3xl md:text-4xl font-medium text-stone-900 leading-tight tracking-tight">
                             {title}
                         </h1>
 
-                        {/* Price */}
                         <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-medium text-stone-900">
                                 {currency === 'USD' ? '$' : currency}{price}
@@ -110,15 +102,12 @@ const TilesDetailsPage = async ({ params }) => {
                             <span className="text-sm text-stone-400">/ unit</span>
                         </div>
 
-                        {/* Divider */}
                         <div className="border-t border-stone-100" />
 
-                        {/* Description */}
                         <p className="text-sm text-stone-500 leading-relaxed">
                             {description}
                         </p>
 
-                        {/* Tags */}
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag, i) => (
                                 <span
@@ -130,10 +119,8 @@ const TilesDetailsPage = async ({ params }) => {
                             ))}
                         </div>
 
-                        {/* Divider */}
                         <div className="border-t border-stone-100" />
 
-                        {/* Specs grid */}
                         <div className="grid grid-cols-2 gap-3">
                             <div className="bg-stone-50 rounded-xl p-4">
                                 <p className="text-xs text-stone-400 uppercase tracking-widest mb-1">Dimensions</p>
@@ -153,7 +140,6 @@ const TilesDetailsPage = async ({ params }) => {
                             </div>
                         </div>
 
-                        {/* CTA */}
                         <div className="flex gap-3 pt-2">
                             <button
                                 className="flex-1 bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors hover:cursor-pointer"

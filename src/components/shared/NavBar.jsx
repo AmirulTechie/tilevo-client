@@ -14,7 +14,6 @@ const NavBar = () => {
         <header className="w-full border-b border-stone-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
 
-                {/* Logo */}
                 <Link
                     href="/"
                     className="text-2xl font-medium text-stone-900 tracking-tight shrink-0 md:text-3xl"
@@ -22,7 +21,6 @@ const NavBar = () => {
                     Tilevo
                 </Link>
 
-                {/* Desktop nav links — centered */}
                 <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                     <NavLink href="/">
                         <span className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
@@ -41,10 +39,8 @@ const NavBar = () => {
                     </NavLink>
                 </nav>
 
-                {/* Right side */}
                 <div className="flex items-center gap-3">
 
-                    {/* Auth — desktop */}
                     <div className="hidden lg:flex items-center gap-3">
                         {user ? (
                             <>
@@ -73,7 +69,6 @@ const NavBar = () => {
                         )}
                     </div>
 
-                    {/* Mobile hamburger */}
                     <button
                         className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 group"
                         onClick={() => setMobileOpen(prev => !prev)}
@@ -86,7 +81,6 @@ const NavBar = () => {
                 </div>
             </div>
 
-            {/* Mobile drawer */}
             <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-stone-100 ${mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <nav className="flex flex-col px-6 py-4 gap-1 bg-white">
                     <NavLink href="/">
@@ -114,7 +108,6 @@ const NavBar = () => {
                         </span>
                     </NavLink>
 
-                    {/* Auth — mobile */}
                     <div className="pt-3 pb-1">
                         {user ? (
                             <div className="flex items-center justify-between">
