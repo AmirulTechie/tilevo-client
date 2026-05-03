@@ -1,11 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
 const LoginPage = () => {
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const handleLoginFunc = (data) =>{
+    const handleLoginFunc = async(data) =>{
+        const {email, password} = data;
+        const { data:res, error } = await authClient.signIn.email({
+            
+            email: email, // required
+            password: password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
     }
     return (
         <div className="min-h-screen bg-white flex">

@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import NavLink from './NavLink';
-
+import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 const NavBar = () => {
+    const router = useRouter();
     const [mobileOpen, setMobileOpen] = useState(false);
-
-    // Replace with your actual auth session hook e.g. useSession() from BetterAuth
-    const user = null; // swap with: const { data: session } = useSession();
-
+    const { data: session, isPending } = authClient.useSession();
+    const user = session?.user ?? null;
+    console.log(session, "session");
     return (
         <header className="w-full border-b border-stone-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
@@ -42,12 +44,16 @@ const NavBar = () => {
                 <div className="flex items-center gap-3">
 
                     <div className="hidden lg:flex items-center gap-3">
-                        {user ? (
+                        {
+                            isPending ? (<span className="loading loading-dots loading-md"></span>) 
+                            :
+                            user ? (
                             <>
                                 {/* Avatar */}
-                                <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center shrink-0">
+                                <h2>Hello, {user.name}</h2>
+                                <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center shrink-0 hover:cursor-pointer">
                                     {user.image ? (
-                                        <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                                        <Link href="/my-profile"><Image src={user.image} alt={user.name} width={50} height={50} className="w-full h-full object-cover" /></Link>
                                     ) : (
                                         <span className="text-xs font-medium text-stone-500">
                                             {user.name?.[0]?.toUpperCase() ?? 'U'}
@@ -55,9 +61,17 @@ const NavBar = () => {
                                     )}
                                 </div>
                                 {/* Logout */}
-                                <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all">
+                                <Link href="/"> 
+                                            <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all cursor-pointer" onClick={async() =>await authClient.signOut({
+                                            fetchOptions: {
+                                                            onSuccess: () => {
+                                                            router.push("/login"); // redirect to login page
+                                                                            },
+                                                                                },
+                                                                                    })}>
                                     Log out
                                 </button>
+                                </Link>
                             </>
                         ) : (
                             <Link
@@ -114,7 +128,7 @@ const NavBar = () => {
                                 <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center">
                                         {user.image ? (
-                                            <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                                            <Image src={user.image} alt={user.name} width={50} height={50} className="w-full h-full object-cover" />
                                         ) : (
                                             <span className="text-xs font-medium text-stone-500">
                                                 {user.name?.[0]?.toUpperCase() ?? 'U'}
