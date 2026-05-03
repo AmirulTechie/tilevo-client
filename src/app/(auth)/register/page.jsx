@@ -4,8 +4,12 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useForm, useWatch } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useRouter } from "next/navigation";
+
 
 const RegisterPage = () => {
+    const router = useRouter();
     const { register, handleSubmit, control, formState: { errors } } = useForm();
 
     const passwordValue = useWatch({ control, name: 'password', defaultValue: '' });
@@ -19,7 +23,15 @@ const RegisterPage = () => {
             password: password, // required
             image: photoUrl,
         });
-        console.log("res",res, "error:", error)
+        
+        if(error){
+            toast("Something went wrong. Please try again");
+            return;
+        }
+        if(res){
+            toast("Account created successfully!")
+            router.push("/login");
+        }
     };
 
 
