@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} h-full antialiased`}
     >
       
-      <body className="flex flex-col">
+      <body className="flex flex-col" suppressHydrationWarning>
         {children}
       </body>
       
