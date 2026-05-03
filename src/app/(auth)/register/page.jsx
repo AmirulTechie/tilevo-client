@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useForm, useWatch } from 'react-hook-form';
 
@@ -10,14 +11,15 @@ const RegisterPage = () => {
     const passwordValue = useWatch({ control, name: 'password', defaultValue: '' });
 
     const handleRegisterFunc = async(data) => {
+        const {name, email, password, photoUrl} = data;
         // wire up BetterAuth registration here
         const { data: res, error } = await authClient.signUp.email({
-            name: "", // required
-            email: "john.doe@example.com", // required
-            password: "password1234", // required
-            image: "https://example.com/image.png",
-            callbackURL: "https://example.com/callback",
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photoUrl,
         });
+        console.log("res",res, "error:", error)
     };
 
 
