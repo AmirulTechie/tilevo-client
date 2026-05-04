@@ -49,7 +49,7 @@ const NavBar = () => {
                             user ? (
                             <>
                                 {/* Avatar */}
-                                <h2>Hello, {user.name}</h2>
+                                <h2>{user.name}</h2>
                                 <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 overflow-hidden flex items-center justify-center shrink-0 hover:cursor-pointer">
                                     {user.image ? (
                                         <Link href="/my-profile"><Image src={user.image} alt={user.name} width={50} height={50} className="w-full h-full object-cover" /></Link>
