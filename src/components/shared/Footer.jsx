@@ -7,8 +7,8 @@ const footerLinks = {
         { label: "My Profile", href: "/my-profile" },
     ],
     Company: [
-        { label: "About", href: "#" },
-        { label: "Contact Us", href: "#" },
+        { label: "About", href: "/about-us" },
+        { label: "Contact Us", href: "/contact-us" },
         { label: "Privacy Policy", href: "#" },
     ],
     Follow: [
