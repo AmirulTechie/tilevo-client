@@ -13,7 +13,7 @@ export const metadata = {
         template: '%s — Tilevo',
         default: 'Tilevo',
     },
-  description: "",
+  description: "Next.js tile gallery app with Google OAuth, private routes, JSON Server API, and a clean responsive UI.",
   icons:{
     icon: '/tilevo-favicon.svg'
   }
