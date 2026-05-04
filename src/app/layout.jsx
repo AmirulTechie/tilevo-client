@@ -1,5 +1,6 @@
 import dns from "node:dns";
 dns.setServers(['8.8.8.8', '8.8.4.4']);
+import { Analytics } from "@vercel/analytics/next"
 import { Geist} from "next/font/google";
 import "./globals.css";
 
