@@ -50,7 +50,7 @@ const TilesGrid = ({ allTiles }) => {
                     )}
 
                     {filtered.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 animate__animated animate__fadeInUp">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center items-start">
                             {filtered.map(tile => (
                                 <TilesCard key={tile.id} tile={tile} />
                             ))}

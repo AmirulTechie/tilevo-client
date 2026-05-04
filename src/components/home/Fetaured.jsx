@@ -31,7 +31,7 @@ const Featured = async () => {
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate__animated animate__fadeInUp">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate__animated animate__fadeInUp justify-items-center">
                     {tilesData.map(tile => (
                         <TilesCard key={tile.id} tile={tile} />
                     ))}

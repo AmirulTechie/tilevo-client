@@ -23,7 +23,7 @@ const AllTilesPage = async () => {
                                 All tiles
                             </h1>
                             <p className="text-sm text-stone-400">
-                                <span className="text-stone-700 font-medium"></span> tiles in collection
+                                <span className="text-stone-700 font-medium"></span>{allTiles.length} tiles in collection
                             </p>
                         </div>
                     </div>

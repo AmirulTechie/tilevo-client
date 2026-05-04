@@ -136,7 +136,15 @@ const NavBar = () => {
                                     </div>
                                     <span className="text-sm text-stone-700">{user.name}</span>
                                 </div>
-                                <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 transition-all">
+                                <button className="text-sm text-stone-500 border border-stone-200 px-4 py-1.5 rounded-full hover:bg-stone-50 transition-all"
+                                    onClick={async () => await authClient.signOut({
+                                        fetchOptions: {
+                                            onSuccess: () => {
+                                                router.push("/login"); // redirect to login page
+                                            },
+                                        },
+                                    })}
+                                >
                                     Log out
                                 </button>
                             </div>

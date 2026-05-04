@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const TilesCard = ({tile}) => {
     return (
-        <div className=' border-base-500 shadow-xl p-5  items-center bg-10 w-75 space-y-4 hover:cursor-pointer hover:shadow-2xl'>
+        <div className=' border-base-500 shadow-xl p-5  items-center bg-10 w-full max-w-75 space-y-4 hover:cursor-pointer hover:shadow-2xl'>
                 <figure className="h-65">
                     <Image src={tile.image} alt={tile.title} width={400} height={200}></Image>
                 </figure>

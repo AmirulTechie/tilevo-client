@@ -38,8 +38,7 @@ const TilesDetailsPage = async ({ params }) => {
 
     return (
         <div className="min-h-screen bg-white">
-
-=            <div className="border-b border-stone-100 px-6 md:px-16 py-4">
+            <div className="border-b border-stone-100 px-6 md:px-16 py-4">
                 <div className="max-w-6xl mx-auto flex items-center gap-2 text-xs text-stone-400">
                     <Link href="/" className="hover:text-stone-700 transition-colors">Home</Link>
                     <span>/</span>
@@ -50,7 +49,7 @@ const TilesDetailsPage = async ({ params }) => {
             </div>
 
             <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
                     <div className="relative">
                         <div className="aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200">
