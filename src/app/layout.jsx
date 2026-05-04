@@ -1,3 +1,5 @@
+import dns from "node:dns";
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 import { Geist} from "next/font/google";
 import "./globals.css";
 
@@ -7,8 +9,14 @@ const geistSans = Geist({
 });
 
 export const metadata = {
-  title: "Tilevo - Home",
+  title: {
+        template: '%s — Tilevo',
+        default: 'Tilevo',
+    },
   description: "",
+  icons:{
+    icon: '/tilevo-favicon.svg'
+  }
 };
 
 export default function RootLayout({ children }) {

@@ -1,6 +1,10 @@
 import TilesGrid from "@/components/shared/TilesGrid";
 import { getAllTilesData } from "@/lib/data";
 
+export const metadata = {
+    title: 'All Tiles'
+}
+
 const AllTilesPage = async () => {
     const allTiles = await getAllTilesData();
     

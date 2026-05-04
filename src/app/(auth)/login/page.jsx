@@ -3,6 +3,8 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+
 
 const LoginPage = () => {
     const {register, handleSubmit, formState: {errors}} = useForm()
@@ -15,6 +17,10 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         });
+        if(error){
+            toast.error(error.message)
+            return
+        }
     }
     return (
         <div className="min-h-screen bg-white flex">
@@ -133,7 +139,7 @@ const LoginPage = () => {
 
                         <button
                             type="submit"
-                            className="w-full bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors duration-200 mt-1"
+                            className="w-full bg-stone-900 text-white text-sm font-medium py-3 rounded-full hover:bg-stone-700 transition-colors duration-200 mt-1 cursor-pointer"
                         >
                             Sign in
                         </button>
